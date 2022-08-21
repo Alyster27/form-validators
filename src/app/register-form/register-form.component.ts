@@ -16,13 +16,18 @@ export class RegisterFormComponent implements OnInit {
       "firstName": new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z]*')]),
       "lastName": new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z]*')]),
       "emailId": new FormControl(null, [Validators.required, Validators.email]),
-      "mobileNumber": new FormControl(null, [Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(12), Validators.maxLength(12)]),
+      "mobileNumber": new FormControl(null, [Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(10), Validators.maxLength(10)]),
     });
   }
 
   // submit function
   submitData() {
     console.log(this.registerForm.value);
+
+    if (this.registerForm.valid) {
+      alert(`Thank you ${this.registerForm.value.firstName} for registering`);
+      this.registerForm.reset();
+    }
   }
 
   // firstName
